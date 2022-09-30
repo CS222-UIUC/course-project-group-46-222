@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>AutoComplete</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
     </script>  
     
@@ -10,13 +11,19 @@
     
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
         rel="stylesheet" type="text/css" />  
-    
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome to GFG</h1>
-    <input type="text" id="tags">
-    <input type="submit">
-
+  <div class="wrap">
+    <div class="search">
+      <form method="POST">
+    <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
+    <button type="submit" class="searchButton">
+      <i class="fa fa-search"></i>
+   </button>
+    
+  </div>
+</div>
     <script>
   $( function() {
     var availableTags = [
