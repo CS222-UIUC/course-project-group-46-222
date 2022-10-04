@@ -4,3 +4,5 @@ bs4
 pandas
 matplotlib
 numpy
+pytest
+pytest-cov
