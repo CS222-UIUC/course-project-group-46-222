@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <form action = '{{base_url}}/searchPage' method="POST">
   <div class="wrap">
     <div class="search">
       <form method="POST">
@@ -22,8 +23,9 @@
       <i class="fa fa-search"></i>
    </button>
     
-  </div>
-</div>
+    </div>
+   </div>
+   </form>
     <script>
   $( function() {
     var availableTags = [
