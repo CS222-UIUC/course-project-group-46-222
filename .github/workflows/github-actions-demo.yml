@@ -1,0 +1,38 @@
+name: CI
+on:
+   push:
+     branches: [ "X", "Y"]
+   pull_request:
+     branches: [ "main" ]
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      
+      
+      steps:
+          - name: Python Linter
+            # You may pin to the exact commit or the version.
+            # uses: sunnysid3up/python-linter@93076bd8f740f062069291d738fc70c1b4171c1d
+            uses: sunnysid3up/python-linter@v0.1-beta.7
+            with:
+          # Source file or directory
+              source: .
+              # Set strictness for lint [low, medium, high]
+              strict: medium
+     
+          - name: actions-pytest
+            # You may pin to the exact commit or the version.
+            # uses: xoviat/actions-pytest@6e27d0810b47a907cc45bc96092599f072b28870
+            uses: xoviat/actions-pytest@0.1-alpha2
+            
+            
+          - name: coverage.py badge
+            # You may pin to the exact commit or the version.
+            # uses: tj-actions/coverage-badge-py@c3a0870495183a1848c89d568db7a4e7954fee71
+            uses: tj-actions/coverage-badge-py@v1.8
+            with:
+              # Output path to write the coverage badge.
+              output: coverage.svg
+              # Overwrite an existing coverage badge.
+              overwrite: true
+        

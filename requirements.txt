@@ -3,3 +3,6 @@ requests==2.28.1
 bs4
 pandas
 matplotlib
+numpy
+pytest
+pytest-cov
