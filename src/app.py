@@ -1,6 +1,9 @@
 from contextlib import redirect_stderr
 from flask import Flask, redirect, url_for, render_template, request
 import scrape
+import pandas as pd
+import getClassList
+
 app = Flask(__name__)
 app.static_folder = 'static'
 
@@ -18,9 +21,11 @@ def get_class_type():
 
 @app.route('/searchPage', methods= ["POST"])
 def searchPage():
-        srch_term = request.form.get("srch-term")
+        srch_term = request.form.get("type")
+        print(srch_term)
+        df = getClassList.getClassList(srch_term)
+        return df.to_html(header="true", table_id="table")
 
-        return render_template("searchPage.html", srch_term = srch_term)
 
  
 if __name__ == '__main__':
