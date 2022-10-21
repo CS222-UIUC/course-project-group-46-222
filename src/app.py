@@ -1,10 +1,11 @@
 """"Will do all the main work of the website, bones of the the project"""
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, flash
 import scrape
 import get_class_list
 
 app = Flask(__name__)
 app.static_folder = 'static'
+app.secret_key = "super secret key"
 
 @app.route('/', methods=["GET"])
 def main():
@@ -16,8 +17,11 @@ def main():
 def get_class_type():
     """"Redirect you to the specific page after you type in the subject type"""
     srch_term = request.form.get("type")
-    return redirect(url_for('search_page',srch_term=srch_term))
-
+    all_terms = scrape.scrape()
+    if(srch_term in all_terms):
+        return redirect(url_for('search_page',srch_term=srch_term))
+    else:
+        return redirect(url_for('get_class_type'))
 
 @app.route('/searchPage/<srch_term>')
 def search_page(srch_term):
