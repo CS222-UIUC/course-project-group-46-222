@@ -15,16 +15,14 @@ def main():
 
 @app.route('/', methods=['POST'])
 def get_class_type():
-        text = request.form['type']
-        text = text.upper()
-        return text
-
-@app.route('/searchPage', methods= ["POST"])
-def searchPage():
         srch_term = request.form.get("type")
-        print(srch_term)
-        df = getClassList.getClassList(srch_term)
-        return df.to_html(header="true", table_id="table")
+        return redirect(url_for('searchPage',input=srch_term))
+
+
+@app.route('/searchPage/<input>')
+def searchPage(input=None):
+        df = getClassList.getClassList(input)
+        return df[['Subject', 'Number','Course Title']].rename_axis(None).to_html(header="true", table_id="table",index=False)
 
 
  
