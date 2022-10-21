@@ -12,20 +12,19 @@ def main():
     if request.method == "GET":
         languages = scrape.scrape()
         return render_template("index.html", languages=languages)
+    return
 
 @app.route('/', methods=['POST'])
 def get_class_type():
     srch_term = request.form.get("type")
-    return redirect(url_for('searchPage',input=srch_term))
+    return redirect(url_for('search_page',input=srch_term))
 
 
 @app.route('/searchPage/<input>')
-def searchPage(input=None):
+def search_page(input):
     df = getClassList.getClassList(input)
     return (df[['Subject', 'Number','Course Title']].rename_axis(None)
             .to_html(header="true", table_id="table",index=False))
-
-
  
 if __name__ == '__main__':
     app.run(debug=True)
