@@ -1,10 +1,14 @@
+""""Scrapes the website and gives us a list of all the subject types"""
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
 def scrape():
-    URL = "http://catalog.illinois.edu/courses-of-instruction/"
-    page = requests.get(URL)
+    """"Main scraper returns a list of all of the majors and their abbreviations"""
+    link_ = "http://catalog.illinois.edu/courses-of-instruction/"
+    page = requests.get(
+        link_,
+        timeout=5)
 
     soup = BeautifulSoup(page.content, "html.parser")
     majors = []
@@ -13,17 +17,17 @@ def scrape():
         if ' - ' in link.text:
             majors.append(link.text)
 
-    shrthandToMajor = {}
+    short_major = {}
 
     list1 = []
     for major in majors:
         split = major.split(' - ')
-        shrthandToMajor[split[0]] = split[1]
+        short_major[split[0]] = split[1]
         list1.append(split[0])
 
-    df = pd.DataFrame(list(shrthandToMajor.items()))
-    df.columns =['Short', 'Long']
-    df = df.set_index('Short')
+    data_frame = pd.DataFrame(list(short_major.items()))
+    data_frame.columns =['Short', 'Long']
+    data_frame = data_frame.set_index('Short')
 
-    df.to_csv('data/majors.csv', sep='\t')
+    data_frame.to_csv('data/majors.csv', sep='\t')
     return list1
