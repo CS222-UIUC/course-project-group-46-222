@@ -13,19 +13,35 @@
         rel="stylesheet" type="text/css" />  
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<style>
+  .box{
+    width: 100%;
+    height: 100%;
+    padding: 350px 0;
+    text-align: center;
+}
+form {
+    display:inline-flex;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
 <body>
-  <form action = "/" method="POST">
+<div class="box">
+  <form action = '{{base_url}}/searchPage' method="POST">
   <div class="wrap">
-    <div class="search">
+    <div class="search" style="margin-left: 350px;">
       <form method="POST">
      <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
     <button type="submit" class="searchButton">
       <i class="fa fa-search"></i>
-   </button>
-    
+   </button> 
     </div>
    </div>
    </form>
+</div>
     <script>
   $( function() {
     var availableTags = [
