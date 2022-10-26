@@ -1,13 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-body{
-  background-image: url("https://media.giphy.com/media/mno6BJfy8USic/giphy.gif");
+*{
+  
   font-family: 'Open Sans', sans-serif;
-  overflow: hidden;
-  background-size: cover;
-  height: 100vh;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .search {
