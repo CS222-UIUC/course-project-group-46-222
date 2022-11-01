@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <div class="center">
+    <H1 class="welcome-text">UIUC Class Intelligence</H1>
+  </div>
   <form action = "/" method="POST">
   <div class="wrap">
     <div class="search">
@@ -21,11 +24,10 @@
      <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
     <button type="submit" class="searchButton">
       <i class="fa fa-search"></i>
-   </button>
-    
+    </button>
     </div>
    </div>
-   </form>
+  </form>
     <script>
   $( function() {
     var availableTags = [
@@ -38,6 +40,5 @@
     });
   });
   </script>
-    
 </body>
 </html>
