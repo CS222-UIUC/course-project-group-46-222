@@ -68,8 +68,8 @@
  });
  </script>
   <body>
-
-   <h1> Search Results for {{srch_term}}</h1> 
+    <div class="container">
+   
    <form action = "/" method="POST">
     <div style="display: flex; justify-content: flex-end">
     <div class="search">
@@ -80,11 +80,12 @@
 </div>
 </div>
   </form>
-
+  <h1> Search Results for {{srch_term}}</h1> 
     <code>
       {{data_table | safe}}
     </code>
     
     
   </body>
+</html>
 </html>
