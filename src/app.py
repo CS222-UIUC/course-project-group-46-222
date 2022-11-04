@@ -35,7 +35,8 @@ def search_page(srch_term):
 @app.route('/searchPage/<srch_term>/<class_num>')
 def look_up_class(srch_term, class_num):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
-    return render_template('displayData.html', class1=class_num)
+    languages = scrape.scrape()
+    return render_template('displayData.html', class1=class_num, languages = languages)
 
 if __name__ == '__main__':
     app.run(debug=True)
