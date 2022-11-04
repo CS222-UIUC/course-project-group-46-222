@@ -57,6 +57,19 @@
 
   </style>
 
+  <script>
+    $( function() {
+   var availableTags = [
+       {% for language in languages %}
+           "{{language}}",
+       {% endfor %}
+   ];
+   $( "#tags" ).autocomplete({
+     source: availableTags
+   });
+ });
+  </script>
+
   <body>
     <form action = "/" method="POST">
         <div style="display: flex; justify-content: flex-end">
