@@ -10,12 +10,14 @@
 
 
 .container {
+
   width: 100%;
   min-height: 100vh;
   background-image: url("https://media.giphy.com/media/mno6BJfy8USic/giphy.gif");
   background-position: center ;
   background-size: cover;
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
@@ -61,9 +63,3 @@
 
 
 /*Resize the wrap to see the search bar change!*/
-.wrap{
-    width: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }

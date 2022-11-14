@@ -32,11 +32,13 @@ def search_page(srch_term):
                                   .apply(lambda x: f'<a href="{x}">{x}</a>'))
     return render_template("searchPage.html", data_table = data_frame.to_html(header="true", table_id="table",index=False, escape=False), srch_term = srch_term, languages=languages)
 
+
 @app.route('/searchPage/<srch_term>/<class_num>')
 def look_up_class(srch_term, class_num):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
     languages = scrape.scrape()
     return render_template('displayData.html', class1=class_num, languages = languages)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
