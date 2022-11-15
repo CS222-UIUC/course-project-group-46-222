@@ -15,6 +15,7 @@
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
         rel="stylesheet" type="text/css" /> 
   </head>
+  </head>
   <style>
     .searchButton {
     width: 2.5rem;
@@ -55,8 +56,9 @@
 
 
   </style>
+
   <script>
- $( function() {
+    $( function() {
    var availableTags = [
        {% for language in languages %}
            "{{language}}",
@@ -66,25 +68,20 @@
      source: availableTags
    });
  });
- </script>
-  <body>
+  </script>
 
-    <div class="container">
-   
-   <form action = "/" method="POST">
-    <div style="display: flex; justify-content: flex-end">
-    <div class="search">
-    <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
-    <button type="submit" class="searchButton">
-      <i class="fa fa-search"></i>
-  </button>
-</div>
-</div>
-  </form>
-  <h1> Search Results for {{srch_term}}</h1> 
-    <code>
-      {{data_table | safe}}
-    </code>
+  <body>
+    <form action = "/" method="POST">
+        <div style="display: flex; justify-content: flex-end">
+        <div class="search">
+        <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+      </button>
+    </div>
+    </div>
+      </form>
+
+    <h1>{{class1}}</h1>
   </body>
-</html>
 </html>
