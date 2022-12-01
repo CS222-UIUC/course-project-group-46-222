@@ -47,6 +47,11 @@
  color: #9DBFAF;
 }
 
+.semester{
+  border: 3px solid #00B4CC;
+  height: 2.25rem;
+  border-left: none;
+}
 
 .search {
   width: 100%;
