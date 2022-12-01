@@ -21,9 +21,19 @@
    <form action = "/" method="POST">
      <div class="search">
      <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()" style="width: 37.5rem;">
+     <form class="semester" action="/action_page.php">
+      <select name="cars" id="cars" class="semester">
+        <option disabled selected value> Semester </option>
+        {% for option in options %}
+          <option value="{{ option }}"> {{ option }}</option>
+        {% endfor %}
+      </select>
+      <br><br>
+    </form>
      <button type="submit" class="searchButton">
        <i class="fa fa-search"></i>
    </button>
+   
 </div>
    </form>
  

@@ -34,7 +34,7 @@
     .searchTerm {
       width: 30%;
       border: 3px solid #00B4CC;
-
+      border-right: none;
       padding: 2.25px;
       height: 70%;
       border-radius: 5px 0 0 5px;
@@ -80,7 +80,7 @@
     
     <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
     <form class="semester" action="/action_page.php">
-      <select name="cars" id="cars" class="semester">
+      <select name="sem" id="sem" class="semester">
         {% for option in options %}
           <option value="{{ option }}"> {{ option }}</option>
         {% endfor %}

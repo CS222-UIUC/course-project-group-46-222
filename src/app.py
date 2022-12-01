@@ -12,7 +12,8 @@ app.secret_key = "super secret key"
 def main():
     """"Renders the search box and the background"""
     languages = scrape.scrape()
-    return render_template("index.html", languages=languages)
+    options = get_semesters.get_semesters()
+    return render_template("index.html", languages=languages, options=options)
 
 @app.route('/', methods=['POST'])
 def get_class_type():
