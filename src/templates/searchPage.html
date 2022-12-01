@@ -27,11 +27,14 @@
     cursor: pointer;
     font-size: 20px;
     }
-
+    .semester{
+      border: 3px solid #00B4CC;
+      border-left: none;
+    }
     .searchTerm {
       width: 30%;
       border: 3px solid #00B4CC;
-      border-right: none;
+
       padding: 2.25px;
       height: 70%;
       border-radius: 5px 0 0 5px;
@@ -42,9 +45,9 @@
       }
       
       .search {
-      width: 100%;
-      position: relative;
-      display: flex;
+        width: 100%;
+        display: flex;
+
     }
 
 
@@ -72,12 +75,23 @@
     <div class="container">
    
    <form action = "/" method="POST">
-    <div style="display: flex; justify-content: flex-end">
+    <div style="display: flex; margin: auto;">
     <div class="search">
+    
     <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
+    <form class="semester" action="/action_page.php">
+      <select name="cars" id="cars" class="semester">
+        {% for option in options %}
+          <option value="{{ option }}"> {{ option }}</option>
+        {% endfor %}
+      </select>
+      <br><br>
+    </form>
     <button type="submit" class="searchButton">
       <i class="fa fa-search"></i>
   </button>
+
+  
 </div>
 </div>
   </form>
