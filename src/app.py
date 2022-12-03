@@ -19,13 +19,14 @@ def main():
 def get_class_type():
     """"Redirect you to the specific page after you type in the subject type"""
     srch_term = request.form.get("type")
+    sem_selector = request.form.get("sem-selector")
     all_terms = scrape.scrape()
     if srch_term in all_terms:
-        return redirect(url_for('search_page',srch_term=srch_term))
+        return redirect(url_for('search_page',srch_term=srch_term, sem=sem_selector))
     return redirect(url_for('get_class_type'))
 
-@app.route('/searchPage/<srch_term>/')
-def search_page(srch_term):
+@app.route('/searchPage/<srch_term>/<sem>')
+def search_page(srch_term,sem):
     """"Displays the classes and the GPA after receiving input"""
     data_frame = get_class_list.get_class_list(srch_term)
     languages = scrape.scrape()
@@ -33,16 +34,15 @@ def search_page(srch_term):
     data_frame = data_frame[['Subject', 'Number','Course Title']].rename_axis(None)
     data_frame['Course Title'] = (data_frame['Course Title']
                                   .apply(lambda x: f'<a href="{x}">{x}</a>'))
-    return render_template("searchPage.html", data_table = data_frame.to_html(header="true", table_id="table",index=False, escape=False), srch_term = srch_term, languages=languages, options=options)
+    return render_template("searchPage.html", data_table = data_frame.to_html(header="true", table_id="table",index=False, escape=False), srch_term = srch_term, languages=languages, options=options, sem=sem)
 
 
-@app.route('/searchPage/<srch_term>/<class_num>')
-def look_up_class(srch_term, class_num):
+@app.route('/searchPage/<srch_term>/<class_num>/<sem>')
+def look_up_class(srch_term, class_num, sem):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
     languages = scrape.scrape()
     options = get_semesters.get_semesters() 
     return render_template('displayData.html', class1=class_num, languages = languages, options=options)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
