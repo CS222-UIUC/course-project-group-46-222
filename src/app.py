@@ -21,7 +21,7 @@ def get_class_type():
     srch_term = request.form.get("type")
     sem_selector = request.form.get("sem-select")
     if sem_selector is None:
-        sem_selector = " "
+        sem_selector = "all"
     all_terms = scrape.scrape()
     if srch_term in all_terms:
         return redirect(url_for('search_page',srch_term=srch_term, sem=sem_selector))
@@ -30,7 +30,7 @@ def get_class_type():
 @app.route('/searchPage/<srch_term>/<sem>')
 def search_page(srch_term,sem):
     """"Displays the classes and the GPA after receiving input"""
-    data_frame = get_class_list.get_class_list(srch_term)
+    data_frame = get_class_list.get_class_list(srch_term, sem)
     languages = scrape.scrape()
     options = get_semesters.get_semesters()
     data_frame = data_frame[['Subject', 'Number','Course Title']].rename_axis(None)
@@ -44,7 +44,7 @@ def look_up_class(srch_term, class_num, sem):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
     languages = scrape.scrape()
     options = get_semesters.get_semesters() 
-    return render_template('displayData.html', class1=class_num, languages = languages, options=options)
+    return render_template('displayData.html', class1=class_num, languages = languages, options=options, sem=sem)
 
 if __name__ == '__main__':
     app.run(debug=True)
