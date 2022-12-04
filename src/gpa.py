@@ -9,8 +9,10 @@ def createData(number, name, term):
     df = df.rename(columns={'Course Title': 'Course_Title'})
     df = df.rename(columns={'Primary Instructor': 'Primary_Instructor'})    
     name = name.upper()
-    yr = term.split(' ')[0]
-    term = term.split(' ')[1]
+    yr = ''
+    if (term!='all'):
+        yr = term.split(' ')[1]
+        term = term.split(' ')[0]
     year = yr + '-' + term.lower()[:2]
     #print(number)
     #print(name)
