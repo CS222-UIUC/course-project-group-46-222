@@ -3,6 +3,7 @@ from flask import Flask, redirect, url_for, render_template, request, flash
 import scrape
 import get_class_list
 import get_semesters
+import gpa
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -44,7 +45,8 @@ def look_up_class(srch_term, class_num, sem):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
     languages = scrape.scrape()
     options = get_semesters.get_semesters() 
-    return render_template('displayData.html', class1=class_num, languages = languages, options=options, sem=sem)
+    datafr = gpa.createData(class_num, srch_term, sem)
+    return render_template('displayData.html', data_table = datafr.to_html(header="true", table_id="table",index=False, escape=False), class1=class_num, languages = languages, options=options, sem=sem)
 
 if __name__ == '__main__':
     app.run(debug=True)
