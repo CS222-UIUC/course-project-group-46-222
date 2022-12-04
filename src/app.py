@@ -35,11 +35,11 @@ def search_page(srch_term,sem):
     options = get_semesters.get_semesters()
     data_frame = data_frame[['Subject', 'Number','Course Title']].rename_axis(None)
     data_frame['Course Title'] = (data_frame['Course Title']
-                                  .apply(lambda x: f'<a href="{x}">{x}</a>'))
+                                  .apply(lambda x: f'<a href="{sem}/{x}">{x}</a>'))
     return render_template("searchPage.html", data_table = data_frame.to_html(header="true", table_id="table",index=False, escape=False), srch_term = srch_term, languages=languages, options=options, sem=sem)
 
 
-@app.route('/searchPage/<srch_term>/<class_num>/<sem>')
+@app.route('/searchPage/<srch_term>/<sem>/<class_num>')
 def look_up_class(srch_term, class_num, sem):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
     languages = scrape.scrape()
