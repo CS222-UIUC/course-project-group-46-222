@@ -58,7 +58,7 @@
 
 
   </style>
-  <script>
+<script>
  $( function() {
    var availableTags = [
        {% for language in languages %}
@@ -68,8 +68,8 @@
    $( "#tags" ).autocomplete({
      source: availableTags
    });
- });
- </script>
+ }); 
+</script>
   <body>
 
     <div class="container">
@@ -79,13 +79,13 @@
     <div class="search">
     
     <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
-    <form class="semester" method="POST" action="/">
-      <select name="sem-selector" id="sem" class="semester">
+    <form class="semester" method="GET" action="/">
+      <select name="sem-select" class="semester">
+        <option disabled selected value>Select a semester</option>
         {% for option in options %}
           <option value="{{ option }}"> {{ option }}</option>
         {% endfor %}
       </select>
-    </form>
     <button type="submit" class="searchButton">
       <i class="fa fa-search"></i>
   </button>
