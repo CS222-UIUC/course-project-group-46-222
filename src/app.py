@@ -15,11 +15,13 @@ def main():
     options = get_semesters.get_semesters()
     return render_template("index.html", languages=languages, options=options)
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def get_class_type():
     """"Redirect you to the specific page after you type in the subject type"""
     srch_term = request.form.get("type")
-    sem_selector = request.form.get("sem-selector")
+    sem_selector = request.form.get("sem-select")
+    if sem_selector is None:
+        sem_selector = " "
     all_terms = scrape.scrape()
     if srch_term in all_terms:
         return redirect(url_for('search_page',srch_term=srch_term, sem=sem_selector))
