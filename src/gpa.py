@@ -57,7 +57,15 @@ def createData(number, name, term):
     df_classyear = pd.DataFrame(data, columns = ['YearTerm', 'Instructor', 'AvgGPA','totalStudents'])
     return df_classyear
 
-def createImages(number, name, year):
+def createImages(number, name, term):
+    df = pd.read_csv('data/uiuc-gpa-dataset.csv')
+    df = df.rename(columns={'Course Title': 'Course_Title'})
+    df = df.rename(columns={'Primary Instructor': 'Primary_Instructor'}) 
+    if (term!='all'):
+        yr = term.split(' ')[1]
+        term = term.split(' ')[0]
+    year = yr + '-' + term.lower()[:2]
+
     name = name.upper()
     new_df = df.loc[(df['Number'] == number)  & (df['Subject'] == name)]
     data = []
@@ -67,7 +75,10 @@ def createImages(number, name, year):
     studs = []
     paths = []
     years = new_df.YearTerm.unique()
-    df_year = new_df.loc[(new_df['YearTerm'] == year)]
+    if (term != 'all'):
+        df_year = new_df.loc[(new_df['YearTerm'] == year)]
+    else:
+        df_year = new_df
     instructors = df_year.Primary_Instructor.unique()
     df_year
     i = 0
