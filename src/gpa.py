@@ -113,8 +113,8 @@ def createImages(number, name, term):
         ax = fig.add_subplot(1, 1, 1)
         ax.plot(gpa, num_students, color='tab:blue')
         ax.set_title(instructor)
-        plt.savefig('static/image{}.jpg'.format(i))
-        paths.append('static/image{}.jpg'.format(i))
+        plt.savefig('static/plots/image{}.jpg'.format(i))
+        paths.append('static/plots/image{}.jpg'.format(i))
         i += 1
 
 
