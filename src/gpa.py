@@ -1,7 +1,7 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 import numpy as np
-
+import os
 
 
 def createData(number, name, term):
@@ -114,9 +114,14 @@ def createImages(number, name, term):
         ax.plot(gpa, num_students, color='tab:blue')
         ax.set_title(instructor)
         plt.savefig('static/image{}.jpg'.format(i))
-        i += 1
         paths.append('static/image{}.jpg'.format(i))
+        i += 1
 
 
     #print(data)    
     return paths
+
+def clearMem():
+    dir = 'static/plots'
+    for f in os.listdir(dir):
+        os.remove(os.path.join(dir, f))

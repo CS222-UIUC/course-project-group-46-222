@@ -43,6 +43,7 @@ def search_page(srch_term,sem):
 @app.route('/searchPage/<srch_term>/<sem>/<class_num>')
 def look_up_class(srch_term, class_num, sem):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
+    gpa.clearMem()
     languages = scrape.scrape()
     options = get_semesters.get_semesters() 
     datafr = gpa.createData(class_num, srch_term, sem)
