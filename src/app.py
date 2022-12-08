@@ -4,10 +4,17 @@ import scrape
 import get_class_list
 import get_semesters
 import gpa
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 
 app = Flask(__name__)
 app.static_folder = 'static'
 app.secret_key = "super secret key"
+
+
+
 
 @app.route('/', methods=["GET"])
 def main():
@@ -51,6 +58,8 @@ def number_C(data_frame, x):
 @app.route('/searchPage/<srch_term>/<sem>/<course_title>/<number>')
 def look_up_class(srch_term, course_title, sem, number):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
+    gpa.clearMem()
+
     languages = scrape.scrape()
     options = get_semesters.get_semesters() 
     print(sem)
@@ -59,8 +68,12 @@ def look_up_class(srch_term, course_title, sem, number):
     print(number)
     number = int(number)
     datafr = gpa.createData(number, srch_term, sem)
-    # graphs = gpa.createImages(number, srch_term, datafr)
-    return render_template('displayData.html', data_table = datafr.to_html(header="true", table_id="table",index=False, escape=False), class1=course_title, languages = languages, options=options, sem=sem)
+    
+    graphs = gpa.createImages(number, srch_term, sem)
+    print(graphs[0])
+    length = len(graphs)
+    return render_template('displayData.html', data_table = datafr.to_html(header="true", table_id="table",index=False, escape=False), class1=course_title, languages = languages, options=options, sem=sem, length = length, graphs=graphs)
     
 if __name__ == '__main__':
     app.run(debug=True)
+
