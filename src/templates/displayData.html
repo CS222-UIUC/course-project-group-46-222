@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta Http-Equiv="Cache-Control" Content="no-cache">
+    <meta Http-Equiv="Pragma" Content="no-cache">
+    <meta Http-Equiv="Expires" Content="0">
+    <meta Http-Equiv="Pragma-directive: no-cache">
+    <meta Http-Equiv="Cache-directive: no-cache">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"> 
@@ -16,6 +22,7 @@
         rel="stylesheet" type="text/css" /> 
   </head>
   </head>
+  
   <style>
     .searchButton {
     width: 2.5rem;
@@ -85,6 +92,12 @@
     <h1>{{class1}}</h1>
     <code>
       {{data_table | safe}}
+      
     </code>
+   <!-- <img src=../static/image0.jpg alt="Flowers in Chania">-->
+   {% for j in range(length) %}
+      <img src="{{url_for('static', filename= graphs[j])}}">
+  {% endfor %}
   </body>
 </html>
+
