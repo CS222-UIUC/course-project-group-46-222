@@ -5,7 +5,6 @@ import numpy as np
 import os
 
 
-
 def createData(number, name, term):
     df = pd.read_csv('data/uiuc-gpa-dataset.csv')
     df = df.rename(columns={'Course Title': 'Course_Title'})
@@ -116,17 +115,16 @@ def createImages(number, name, term):
         ax = fig.add_subplot(1, 1, 1)
         ax.plot(gpa, num_students, color='tab:blue')
         ax.set_title(instructor)
+
         rand = random.randrange(1, 2000)
         plt.savefig('static/plots/image{}.jpg'.format(rand))
         i += 1
         paths.append('plots/image{}.jpg'.format(rand))
         
 
-
     #print(data)    
     return paths
-
-
+  
 def clearMem():
     dir = 'static/plots'
     for f in os.listdir(dir):

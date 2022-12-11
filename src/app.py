@@ -59,7 +59,6 @@ def number_C(data_frame, x):
 def look_up_class(srch_term, course_title, sem, number):
     """"Actually shows all of the GPAs and the info we have about a certain class such as CS 124"""
     gpa.clearMem()
-
     languages = scrape.scrape()
     options = get_semesters.get_semesters() 
     print(sem)
