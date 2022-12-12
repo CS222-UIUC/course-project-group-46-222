@@ -125,7 +125,15 @@ def createImages(number, name, term):
     #print(data)    
     return paths
   
+
+def max_prof_gpa(class_name, class_num):
+    df = createData(class_num, class_name, 'all');
+    return df.loc[df['AvgGPA'].idxmax()];
+
+
 def clearMem():
     dir = 'static/plots'
     for f in os.listdir(dir):
         os.remove(os.path.join(dir, f))
+
+
