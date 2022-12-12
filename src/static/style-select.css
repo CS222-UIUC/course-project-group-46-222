@@ -1,0 +1,27 @@
+body {
+  background-color: #4b56d2;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00b4cc;
+  padding: 2.25px;
+  height: 2.25rem;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+  min-width: 10rem;
+}
+
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
