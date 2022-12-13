@@ -73,6 +73,25 @@ def look_up_class(srch_term, course_title, sem, number):
     length = len(graphs)
     return render_template('displayData.html', data_table = datafr.to_html(header="true", table_id="table",index=False, escape=False), class1=course_title, languages = languages, options=options, sem=sem, length = length, graphs=graphs)
     
+@app.route('/class-recomendation')
+def help_classes():
+    return render_template('classSelect.html')
+
+@app.route('/class-recomendation/', methods=['GET','POST'])
+def take_class_input():
+    srch_term = request.form.get("rec")
+    return redirect(url_for('display_best_prof',class_=srch_term))
+
+
+@app.route('/class-recomendation/<class_>')
+def display_best_prof(class_):
+    # validate the input
+    # find the prof with the best gpa
+    # display that prof 
+    # ez money
+    
+    return class_;
+
 if __name__ == '__main__':
     app.run(debug=True)
 
