@@ -14,3 +14,5 @@ anays2,kkrak2, smukh4, cfern2
   - Numpy and matplotlib are used to display the grade distribution in a graph for each professor
 (c) Provides reproducible installation instructions 
 (d) Group members and their roles
+
+to run the program cd into src and then do flask --app app run
