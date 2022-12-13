@@ -85,12 +85,8 @@ def take_class_input():
 
 @app.route('/class-recomendation/<class_>')
 def display_best_prof(class_):
-    # validate the input
-    # find the prof with the best gpa
-    # display that prof 
-    # ez money
-    
-    return class_;
+    class_arr = class_.split(' ')
+    return gpa.max_prof_gpa(class_arr[0], int(class_arr[1])).to_string()
 
 if __name__ == '__main__':
     app.run(debug=True)
