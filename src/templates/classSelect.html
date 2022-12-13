@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <title>HTML 5 Boilerplate</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+
+    <link
+      href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style-select.css') }}"
+  />
+  </head>
+  <body>
+    <div class="main-container">
+  
+  
+      <h1 class="main-text"
+        >Enter desired class to see best the best professor!</h1
+      >
+      <h3 class="sub-text">Example: "CS 124"</h3>
+      <form method="POST">
+      <div class="search">
+        <input class="searchTerm" name="rec" type="text" oninput="this.value = this.value.toUpperCase()"/>
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

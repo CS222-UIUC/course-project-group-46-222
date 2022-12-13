@@ -1,0 +1,74 @@
+body {
+  background-image: url("https://media.giphy.com/media/mno6BJfy8USic/giphy.gif");
+  background-position: center;
+  background-size: cover;
+}
+.main-text {
+  font-size: 2.5rem;
+  color: #00b4cc;
+  position: absolute;
+  margin-bottom: 15rem;
+  text-align: center;
+}
+.sub-text {
+  font-size: 1.5rem;
+  color: #00b4cc;
+  margin-top: 0px;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00b4cc;
+  padding: 2.25px;
+  height: 2.25rem;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+  min-width: 10rem;
+}
+
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.searchButton {
+  width: 2.5rem;
+  height: 2.25rem;
+  border: 1px solid #00b4cc;
+  background: #00b4cc;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00b4cc;
+  border-right: none;
+  padding: 2.25px;
+  height: 1.7rem;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+  min-width: 10rem;
+}
+.search {
+  width: 50vw;
+  position: relative;
+  display: flex;
+  overflow: none;
+  flex-grow: 1;
+}
+
+.searchTerm:focus {
+  color: #00b4cc;
+}

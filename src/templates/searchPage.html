@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"> 
+    </script> 
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"> 
+    </script> 
+   
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" /> 
+  </head>
+  <link rel="stylesheet" href="course-project-group-46-222/src/static/searchPage-style.css">
+  <style>
+    .searchButton {
+    width: 2.5rem;
+    height: 2.25rem;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    }
+    .semester{
+      border: 3px solid #00B4CC;
+      border-left: none;
+    }
+    .searchTerm {
+      width: 30%;
+      border: 3px solid #00B4CC;
+      border-right: none;
+      padding: 2.25px;
+      height: 70%;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      color: #9DBFAF;
+      margin-left: auto; 
+      margin-right: 0;
+      }
+      body {
+  background-image: url("https://media.giphy.com/media/mno6BJfy8USic/giphy.gif");
+  background-size: 100vw;
+}
+      .search {
+        width: 100%;
+        display: flex;
+
+    }
+
+
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+
+  </style>
+<script>
+ $( function() {
+   var availableTags = [
+       {% for language in languages %}
+           "{{language}}",
+       {% endfor %}
+   ];
+   $( "#tags" ).autocomplete({
+     source: availableTags
+   });
+ }); 
+</script>
+  <body>
+
+    <div class="container">
+   
+   <form action = "/" method="POST">
+    <div style="display: flex; margin: auto;">
+    <div class="search">
+    
+    <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
+    <form class="semester" method="GET" action="/">
+      <select name="sem-select" class="semester">
+        <option disabled selected value>Select a semester</option>
+        {% for option in options %}
+          <option value="{{ option }}"> {{ option }}</option>
+        {% endfor %}
+      </select>
+    <button type="submit" class="searchButton">
+      <i class="fa fa-search"></i>
+  </button>
+
+  
+</div>
+</div>
+  </form>
+  <h1> Search Results for {{srch_term}}</h1> 
+    <code>
+      {{data_table | safe}}
+    </code>
+  </body>
+</html>
+</html>
