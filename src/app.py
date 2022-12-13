@@ -75,6 +75,7 @@ def look_up_class(srch_term, course_title, sem, number):
     
 @app.route('/class-recomendation')
 def help_classes():
+    print("Chill")
     return render_template('classSelect.html')
 
 @app.route('/class-recomendation/', methods=['GET','POST'])
@@ -86,8 +87,18 @@ def take_class_input():
 @app.route('/class-recomendation/<class_>')
 def display_best_prof(class_):
     class_arr = class_.split(' ')
-    return gpa.max_prof_gpa(class_arr[0], int(class_arr[1])).to_string()
+    recommendation = gpa.max_prof_gpa(class_arr[0], int(class_arr[1]))
+    print(recommendation[1])
+    course = class_arr[0] +" "+ class_arr[1]
+    instructor = recommendation[1]
+    course_gpa = recommendation[2]
+
+
+    return render_template('classRec.html', instructor = instructor, course = course, course_gpa = course_gpa)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 
