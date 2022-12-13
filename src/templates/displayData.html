@@ -20,6 +20,7 @@
    
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
         rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet" href="course-project-group-46-222/src/static/displayData-style.css">
   </head>
   </head>
   
@@ -46,12 +47,18 @@
       outline: none;
       color: #9DBFAF;
       margin-left: auto; 
-      position:relative;
       margin-right: 0;
       }
-      
+      body {
+  background-image: url("https://media.giphy.com/media/mno6BJfy8USic/giphy.gif");
+  background-size: 100vw;
+}
 
+.search {
+        width: 100%;
+        display: flex;
 
+    }
 
 .searchTerm:focus{
   color: #00B4CC;
@@ -75,7 +82,7 @@
 
   <body>
     <form action = "/" method="POST">
-        <div style="display: flex; justify-content: flex-end">
+        <div style="display: flex; justify-content: flex-start">
         <div class="search">
         <input name="type" id="tags" placeholder="Enter course name" class="searchTerm" oninput="this.value = this.value.toUpperCase()">
         <button type="submit" class="searchButton">
